@@ -25,6 +25,14 @@ Route::get('/', function () {
     ]);
 });
 
+Route::prefix('examples')->group(function() {
+    Route::get('/', function() {
+        return Inertia::render('examples/Dashboard', [
+            'title' => 'Dashboard'
+        ]);
+    })->name('examples.dashboard');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
